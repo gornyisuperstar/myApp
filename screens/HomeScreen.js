@@ -1,28 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import MapView from 'react-native-maps';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-export default function MapWithButtons() {
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      />
-
+      {/* Кнопки без Home */}
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Settings')}
+        >
           <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Login')}
+        >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -34,25 +28,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  map: {
-    flex: 1,
-  },
   buttonsContainer: {
     position: 'absolute',
-    top: 40,
-    left: 10,
-    right: 10,
+    top: 60,
+    left: 15,
+    right: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#8FBC8F',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
-    // тени, если нужны:
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 3 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 5,
