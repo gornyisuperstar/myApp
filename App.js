@@ -34,8 +34,8 @@ export default function App() {
         <BlurView
           style={StyleSheet.absoluteFill}
           blurType="dark"
-          blurAmount={30}
-          reducedTransparencyFallbackColor="gray"
+          blurAmount={20}
+          reducedTransparencyFallbackColor="white"
         />
       )}
 

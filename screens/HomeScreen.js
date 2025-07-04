@@ -1,22 +1,25 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import MapView from 'react-native-maps';
 
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* Кнопки без Home */}
+      <MapView
+        style={StyleSheet.absoluteFillObject}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
+
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Settings')}
-        >
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Settings')}>
           <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('Login')}
-        >
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -31,24 +34,20 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     position: 'absolute',
     top: 60,
-    left: 15,
-    right: 15,
+    left: 20,
+    right: 20,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    zIndex: 10, // гарантирует, что кнопки выше карты
   },
   button: {
-    backgroundColor: '#8FBC8F',
+    backgroundColor: '#4682B4',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    elevation: 5,
   },
   buttonText: {
     color: '#fff',
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
 });
